@@ -12,6 +12,12 @@ Crossing out the top item (“Hit the gym”) makes sub-goals ilegible.
 
 * TODO Close buttons are not aligned in nested lists
 
+* TODO Use a dialog prompt for inputing sublist item text
+
+Use a popup window (similar to ~alert~) to input the texts for the
+subitems.  That way I don’t need to stick an input field into (or under)
+the top-level list items.
+
 * References
 
 ** ~ul~ tag (unordered list)
