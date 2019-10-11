@@ -1,0 +1,11 @@
+* TODO Crossing out the super list-item makes the sub list-items ilegible
+
+Given this list item with sub-goals:
+
+#+BEGIN_QUOTE
+- Hit the gym
+  - Hit the treadmill
+  - Hit the squat rack
+#+END_QUOTE
+
+Crossing out the top item (“Hit the gym”) makes sub-goals ilegible.
