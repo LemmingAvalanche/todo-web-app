@@ -169,6 +169,26 @@ for (i = 0; i < close.length; i++) {
   }
 }
 
+// Add sublist item
+var i;
+for (i = 0; i < myNodelist.length; i++) {
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("+");
+  span.className = "addsub";
+  span.appendChild(txt);
+  myNodelist[i].appendChild(span);
+}
+
+// Click on the `addsub` button to create a sublist item
+var addsub = document.getElementsByClassName("addsub");
+var i;
+for (i = 0; i < myNodelist.length; i++) {
+  addsub[i].onclick = function() {
+    var div = this.parentElement;
+    div.style.display = "none";
+  }
+}
+
 // Add a "checked" symbol when clicking on a list item
 var list = document.querySelector('ul');
 list.addEventListener('click', function(ev) {
