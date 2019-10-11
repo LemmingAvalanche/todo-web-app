@@ -10,6 +10,8 @@ Given this list item with sub-goals:
 
 Crossing out the top item (“Hit the gym”) makes sub-goals ilegible.
 
+* TODO Close buttons are not aligned in nested lists
+
 * References
 
 ** ~ul~ tag (unordered list)
