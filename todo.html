@@ -199,8 +199,23 @@ var addsub = document.getElementsByClassName("addsub");
 var i;
 for (i = 0; i < myNodelist.length; i++) {
   addsub[i].onclick = function() {
-    var div = this.parentElement;
-    div.style.display = "none";
+      // TODO need to attach to parent
+      var li = document.createElement("li");
+      // TODO dummy value for now
+      var t = document.createTextNode("new item");
+      li.appendChild(t);
+      // Create close button
+      var spanClose = document.createElement("SPAN");
+      var txt = document.createTextNode("\u00D7");
+      spanClose.className = "close";
+      spanClose.appendChild(txt);
+      li.appendChild(spanClose);
+      // Create addsub button
+      var spanAddsub = document.createElement("SPAN");
+      var txt = document.createTextNode("+");
+      spanAddsub.className = "addsub";
+      spanAddsub.appendChild(txt);
+      li.appendChild(spanAddsub);
   }
 }
 
