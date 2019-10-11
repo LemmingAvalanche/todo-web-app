@@ -9,3 +9,9 @@ Given this list item with sub-goals:
 #+END_QUOTE
 
 Crossing out the top item (“Hit the gym”) makes sub-goals ilegible.
+
+* References
+
+** ~ul~ tag (unordered list)
+
+https://www.w3schools.com/tags/tag_ul.asp
