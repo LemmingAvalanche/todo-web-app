@@ -211,8 +211,6 @@ function setOnclickForAddsub(addsubArray) {
         li.appendChild(t);
         parent.appendChild(li);
         // Create close button
-        // TODO the `close` button is unresponsive; it doesn’t close the
-        //   item.
         var spanClose = document.createElement("SPAN");
         var txt = document.createTextNode("\u00D7");
         spanClose.className = "close";
@@ -259,7 +257,6 @@ function newElement() {
   spanClose.appendChild(txt);
   li.appendChild(spanClose);
   // Add `addsub` button
-  // TODO the `addsub` button does nothing.
   var spanAddsub = document.createElement("SPAN");
   var txt = document.createTextNode("+");
   spanAddsub.className = "addsub";
