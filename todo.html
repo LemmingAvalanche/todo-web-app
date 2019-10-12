@@ -245,6 +245,13 @@ function newElement() {
   span.className = "close";
   span.appendChild(txt);
   li.appendChild(span);
+  // Add `addsub` button
+  // TODO the `addsub` button does nothing.
+  var spanAddsub = document.createElement("SPAN");
+  var txt = document.createTextNode("+");
+  spanAddsub.className = "addsub";
+  spanAddsub.appendChild(txt);
+  li.appendChild(spanAddsub);
 
   for (i = 0; i < close.length; i++) {
     close[i].onclick = function() {
