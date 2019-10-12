@@ -243,6 +243,17 @@ list.addEventListener('click', function(ev) {
   if (ev.target.tagName === 'LI') {
     ev.target.classList.toggle('checked');
   }
+  // Also check all the subitems.
+  var children = ev.target.getElementsByTagName("LI");
+  var i;
+  for (i = 0; i < children.length; i++) {
+    var clist = children[i].classList;
+    // We need to only add `checked` to items that are not checked or
+    // else `add(_)` functions like a toggle.
+    if (!clist.contains('checked')) {
+      clist.add('checked');
+    }
+  }
 }, false);
 
 // Create a new list item when clicking on the "Add" button
