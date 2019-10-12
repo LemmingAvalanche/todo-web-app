@@ -203,20 +203,22 @@ function setOnclickForAddsub(addsubArray) {
   var i;
   for (i = 0; i < addsubArray.length; i++) {
     addsubArray[i].onclick = function() {
-      var parent = this.parentElement;
-      var li = document.createElement("li");
-      // TODO dummy value for now
-      var t = document.createTextNode("new item");
-      li.appendChild(t);
-      parent.appendChild(li);
-      // Create close button
-      // TODO the `close` button is unresponsive; it doesn’t close the
-      //   item.
-      var spanClose = document.createElement("SPAN");
-      var txt = document.createTextNode("\u00D7");
-      spanClose.className = "close";
-      spanClose.appendChild(txt);
-      li.appendChild(spanClose);
+      var sub = prompt("Subgoal", "");
+      if (sub != null && sub.length > 0) {
+        var parent = this.parentElement;
+        var li = document.createElement("li");
+        var t = document.createTextNode(sub);
+        li.appendChild(t);
+        parent.appendChild(li);
+        // Create close button
+        // TODO the `close` button is unresponsive; it doesn’t close the
+        //   item.
+        var spanClose = document.createElement("SPAN");
+        var txt = document.createTextNode("\u00D7");
+        spanClose.className = "close";
+        spanClose.appendChild(txt);
+        li.appendChild(spanClose);
+      }
     }
   }
 }
