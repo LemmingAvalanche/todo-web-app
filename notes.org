@@ -18,6 +18,24 @@ Use a popup window (similar to ~alert~) to input the texts for the
 subitems.  That way I don’t need to stick an input field into (or under)
 the top-level list items.
 
+* TODO The nested ~<ul></ul>~ might not be necessary
+
+It might not be necessary to put the ~<ul></ul>~ inside each top-level
+list item.
+
+I inspected the source of the todo web app:
+
+#+BEGIN_SRC
+Meet George <ul></ul><span class="close">×</span><span
+class="addsub">+</span><li class="">new item<span
+class="close">×</span></li><li>new item<span
+class="close">×</span></li><li>new item<span
+class="close">×</span></li><li>new item<span class="close">×</span></li>
+#+END_SRC
+
+Notice that the second-level ~<li>~ tags are inside the the top-level
+~<li>~ tags, not inside the ~<ul>~ tag.
+
 * References
 
 ** ~ul~ tag (unordered list)
