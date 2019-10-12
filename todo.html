@@ -149,17 +149,17 @@ input {
 </div>
 
 <ul id="myUL">
-  <li>Hit the gym
+  <li class="top-level">Hit the gym
     <ul id="subUL">
       <li>Hit the treadmill</li>
       <li>Hit the squat rack</li>
     </ul>
   </li>
-  <li class="checked">Pay bills <ul></ul></li>
-  <li>Meet George <ul></ul></li>
-  <li>Buy eggs <ul></ul></li>
-  <li>Read a book <ul></ul></li>
-  <li>Organize office <ul></ul></li>
+  <li class="top-level checked">Pay bills <ul></ul></li>
+  <li class="top-level">Meet George <ul></ul></li>
+  <li class="top-level">Buy eggs <ul></ul></li>
+  <li class="top-level">Read a book <ul></ul></li>
+  <li class="top-level">Organize office <ul></ul></li>
 </ul>
 
 <script>
@@ -185,13 +185,14 @@ for (i = 0; i < close.length; i++) {
 }
 
 // Add sublist item
+var myTopLevelNodelist = document.getElementsByClassName("top-level");
 var i;
-for (i = 0; i < myNodelist.length; i++) {
+for (i = 0; i < myTopLevelNodelist.length; i++) {
   var span = document.createElement("SPAN");
   var txt = document.createTextNode("+");
   span.className = "addsub";
   span.appendChild(txt);
-  myNodelist[i].appendChild(span);
+  myTopLevelNodelist[i].appendChild(span);
 }
 
 // Click on the `addsub` button to create a sublist item
@@ -230,6 +231,7 @@ list.addEventListener('click', function(ev) {
 // Create a new list item when clicking on the "Add" button
 function newElement() {
   var li = document.createElement("li");
+  li.setAttribute("class", "top-level");
   var inputValue = document.getElementById("myInput").value;
   var t = document.createTextNode(inputValue);
   li.appendChild(t);
