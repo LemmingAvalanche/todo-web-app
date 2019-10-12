@@ -47,7 +47,7 @@ ul li:hover {
 }
 
 /* When clicked on, add a background color and strike out text */
-ul li.checked {
+ul li.checked span.tp-text {
   background: #888;
   color: #fff;
   text-decoration: line-through;
@@ -149,17 +149,22 @@ input {
 </div>
 
 <ul id="myUL">
-  <li class="top-level">Hit the gym
+    <li class="top-level"><span class="tp-text">Hit the gym</span>
     <ul id="subUL">
       <li>Hit the treadmill</li>
       <li>Hit the squat rack</li>
     </ul>
   </li>
-  <li class="top-level checked">Pay bills <ul></ul></li>
-  <li class="top-level">Meet George <ul></ul></li>
-  <li class="top-level">Buy eggs <ul></ul></li>
-  <li class="top-level">Read a book <ul></ul></li>
-  <li class="top-level">Organize office <ul></ul></li>
+  <li class="top-level checked">
+      <span class="tp-text">Pay bills</span><ul></ul></li>
+  <li class="top-level">
+      <span class="tp-text">Meet George</span><ul></ul></li>
+  <li class="top-level">
+      <span class="tp-text">Buy eggs</span><ul></ul></li>
+  <li class="top-level">
+      <span class="tp-text">Read a book</span><ul></ul></li>
+  <li class="top-level">
+      <span class="tp-text">Organize office</span><ul></ul></li>
 </ul>
 
 <script>
@@ -238,8 +243,13 @@ function newElement() {
   var li = document.createElement("li");
   li.setAttribute("class", "top-level");
   var inputValue = document.getElementById("myInput").value;
-  var t = document.createTextNode(inputValue);
-  li.appendChild(t);
+  // Create a wrapper so that we can strike out the text when the item
+  //is checked (see the `ul li.checked span.tp-text` CSS selector).
+  var textWrapper = document.createElement("span");
+  textWrapper.setAttribute("class", "tp-text");
+
+  textWrapper.innerHTML = inputValue;
+  li.appendChild(textWrapper);
   if (inputValue === '') {
     alert("You must write something!");
   } else {
