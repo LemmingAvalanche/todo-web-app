@@ -200,11 +200,12 @@ var addsub = document.getElementsByClassName("addsub");
 var i;
 for (i = 0; i < myNodelist.length; i++) {
   addsub[i].onclick = function() {
-      // TODO need to attach to parent
+      var parent = this.parentElement;
       var li = document.createElement("li");
       // TODO dummy value for now
       var t = document.createTextNode("new item");
       li.appendChild(t);
+      parent.appendChild(li);
       // Create close button
       var spanClose = document.createElement("SPAN");
       var txt = document.createTextNode("\u00D7");
