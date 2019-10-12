@@ -240,11 +240,12 @@ function newElement() {
   }
   document.getElementById("myInput").value = "";
 
-  var span = document.createElement("SPAN");
+  // Add `close` button
+  var spanClose = document.createElement("SPAN");
   var txt = document.createTextNode("\u00D7");
-  span.className = "close";
-  span.appendChild(txt);
-  li.appendChild(span);
+  spanClose.className = "close";
+  spanClose.appendChild(txt);
+  li.appendChild(spanClose);
   // Add `addsub` button
   // TODO the `addsub` button does nothing.
   var spanAddsub = document.createElement("SPAN");
