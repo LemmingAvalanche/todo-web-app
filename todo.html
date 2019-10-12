@@ -198,7 +198,7 @@ for (i = 0; i < myTopLevelNodelist.length; i++) {
 // Click on the `addsub` button to create a sublist item
 var addsub = document.getElementsByClassName("addsub");
 var i;
-for (i = 0; i < myNodelist.length; i++) {
+for (i = 0; i < addsub.length; i++) {
   addsub[i].onclick = function() {
       var parent = this.parentElement;
       var li = document.createElement("li");
