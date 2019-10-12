@@ -155,11 +155,11 @@ input {
       <li>Hit the squat rack</li>
     </ul>
   </li>
-  <li class="checked">Pay bills</li>
-  <li>Meet George</li>
-  <li>Buy eggs</li>
-  <li>Read a book</li>
-  <li>Organize office</li>
+  <li class="checked">Pay bills <ul></ul></li>
+  <li>Meet George <ul></ul></li>
+  <li>Buy eggs <ul></ul></li>
+  <li>Read a book <ul></ul></li>
+  <li>Organize office <ul></ul></li>
 </ul>
 
 <script>
@@ -237,6 +237,9 @@ function newElement() {
     alert("You must write something!");
   } else {
     document.getElementById("myUL").appendChild(li);
+    // Create empty sublist
+    var ul = document.createElement("ul");
+    li.appendChild(ul);
   }
   document.getElementById("myInput").value = "";
 
