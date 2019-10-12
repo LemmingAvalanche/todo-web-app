@@ -163,6 +163,7 @@ input {
 </ul>
 
 <script>
+
 // Create a "close" button and append it to each list item
 var myNodelist = document.getElementsByTagName("LI");
 var i;
@@ -174,15 +175,18 @@ for (i = 0; i < myNodelist.length; i++) {
   myNodelist[i].appendChild(span);
 }
 
+function setOnclickForClose(closeArray) {
+  var i;
+    for (i = 0; i < closeArray.length; i++) {
+      closeArray[i].onclick = function() {
+        var div = this.parentElement;
+        div.style.display = "none";
+      }
+    }
+}
 // Click on a close button to hide the current list item
 var close = document.getElementsByClassName("close");
-var i;
-for (i = 0; i < close.length; i++) {
-  close[i].onclick = function() {
-    var div = this.parentElement;
-    div.style.display = "none";
-  }
-}
+setOnclickForClose(close);
 
 // Add sublist item
 var myTopLevelNodelist = document.getElementsByClassName("top-level");
@@ -256,12 +260,7 @@ function newElement() {
   spanAddsub.appendChild(txt);
   li.appendChild(spanAddsub);
 
-  for (i = 0; i < close.length; i++) {
-    close[i].onclick = function() {
-      var div = this.parentElement;
-      div.style.display = "none";
-    }
-  }
+  setOnclickForClose(close);
 }
 </script>
 
