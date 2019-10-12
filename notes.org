@@ -39,6 +39,11 @@ class="close">×</span></li><li>new item<span class="close">×</span></li>
 Notice that the second-level ~<li>~ tags are inside the the top-level
 ~<li>~ tags, not inside the ~<ul>~ tag.
 
+* TODO Can’t check a top-level item by clikcking on the text
+
+I Can’t check a top-level item by clikcking on the text; I need to
+either click to the left or to the right of the text.
+
 * References
 
 ** ~ul~ tag (unordered list)
