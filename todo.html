@@ -156,22 +156,22 @@ input {
 </div>
 
 <ul id="myUL">
-    <li class="top-level"><span class="tp-text">Hit the gym</span>
-    <ul id="subUL">
-      <li>Hit the treadmill</li>
-      <li>Hit the squat rack</li>
-    </ul>
+    <li class="top-level"><span class="tp-text">
+        Hit the gym
+        <li>Hit the treadmill</li>
+        <li>Hit the squat rack</li>
+    </span>
   </li>
   <li class="top-level checked">
-      <span class="tp-text">Pay bills</span><ul></ul></li>
+      <span class="tp-text">Pay bills</span></li>
   <li class="top-level">
-      <span class="tp-text">Meet George</span><ul></ul></li>
+      <span class="tp-text">Meet George</span></li>
   <li class="top-level">
-      <span class="tp-text">Buy eggs</span><ul></ul></li>
+      <span class="tp-text">Buy eggs</span></li>
   <li class="top-level">
-      <span class="tp-text">Read a book</span><ul></ul></li>
+      <span class="tp-text">Read a book</span></li>
   <li class="top-level">
-      <span class="tp-text">Organize office</span><ul></ul></li>
+      <span class="tp-text">Organize office</span></li>
 </ul>
 
 <script>
@@ -326,9 +326,6 @@ function newElement() {
     alert("You must write something!");
   } else {
     document.getElementById("myUL").appendChild(li);
-    // Create empty sublist
-    var ul = document.createElement("ul");
-    li.appendChild(ul);
   }
   document.getElementById("myInput").value = "";
 
