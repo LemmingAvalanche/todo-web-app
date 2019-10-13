@@ -264,6 +264,37 @@ function topLevelCheckUncheck(target) {
   }
 }
 
+
+/* Check/uncheck a subitem. */
+function subItemCheckUncheck(target) {
+  if (!target.classList.contains('checked')) {
+      target.classList.add('checked');
+      // If all siblings are also checked then we must check the
+      // top-level item.
+      // NOTE It seems that we need to use `querySelectorAll` in order
+      //   to get a type that we can use `map(_)` on.
+      var siblingsArray = target.parentNode.
+                            querySelectorAll(":scope > LI");
+      var siblings = Array.from(siblingsArray);
+      var siblingsThatAreChecked = siblings.map(function(node) {
+          return node.classList.contains('checked');
+        });
+      var allSiblingsChecked = siblingsThatAreChecked.reduce(
+        // Return true if all values in the array are equal to `true`.
+        function (accumulator, checked) {
+          return accumulator && checked;
+        });
+      if (allSiblingsChecked) {
+        target.parentNode.classList.add('checked');
+      }
+  } else {
+      target.classList.remove('checked');
+      // Not all subitems are checked so the top-level item must be
+      // unchecked.
+      target.parentNode.classList.remove('checked');
+  }
+}
+
 // Add a "checked" symbol when clicking on a list item
 var list = document.querySelector('ul');
 list.addEventListener('click', function(ev) {
@@ -271,7 +302,7 @@ list.addEventListener('click', function(ev) {
     if (ev.target.classList.contains('top-level')) {
       topLevelCheckUncheck(ev.target);
     } else {
-      // TODO implement logic for subitem check/uncheck
+      subItemCheckUncheck(ev.target);
     }
   }
 }, false);
