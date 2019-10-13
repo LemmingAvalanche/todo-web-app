@@ -182,6 +182,14 @@ function createCloseButton(node) {
   node.appendChild(span);
 }
 
+function createAddsubButton(node) {
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("+");
+  span.className = "addsub";
+  span.appendChild(txt);
+  node.appendChild(span);
+}
+
 // Create a "close" button and append it to each list item
 var myNodelist = document.getElementsByTagName("LI");
 var i;
@@ -210,7 +218,7 @@ for (i = 0; i < myTopLevelNodelist.length; i++) {
   var txt = document.createTextNode("+");
   span.className = "addsub";
   span.appendChild(txt);
-  myTopLevelNodelist[i].appendChild(span);
+  createAddsubButton(myTopLevelNodelist[i]);
 }
 
 function setOnclickForAddsub(addsubArray) {
@@ -327,12 +335,7 @@ function newElement() {
   document.getElementById("myInput").value = "";
 
   createCloseButton(li);
-  // Add `addsub` button
-  var spanAddsub = document.createElement("SPAN");
-  var txt = document.createTextNode("+");
-  spanAddsub.className = "addsub";
-  spanAddsub.appendChild(txt);
-  li.appendChild(spanAddsub);
+  createAddsubButton(li);
 
   setOnclickForClose(close);
   setOnclickForAddsub(addsub);
