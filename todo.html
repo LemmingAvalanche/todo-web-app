@@ -285,7 +285,9 @@ function subItemCheckUncheck(target) {
                             querySelectorAll(":scope > LI");
       var siblings = Array.from(siblingsArray);
       var siblingsThatAreChecked = siblings.map(function(node) {
-          return node.classList.contains('checked');
+          return node.classList.contains('checked')
+                 // Nodes that have been closed are treated as “checked”.
+                   || (node.style.display == "none")
         });
       var allSiblingsChecked = siblingsThatAreChecked.reduce(
         // Return true if all values in the array are equal to `true`.
