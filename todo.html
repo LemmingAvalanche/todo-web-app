@@ -261,11 +261,7 @@ list.addEventListener('click', function(ev) {
         var i;
         for (i = 0; i < children.length; i++) {
             var clist = children[i].classList;
-            // We need to only add `checked` to items that are not checked or
-            // else `add(_)` functions like a toggle.
-            if (clist.contains('checked')) {
-                clist.remove('checked');
-            }
+            clist.remove('checked');
         }
     }
   }
