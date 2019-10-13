@@ -222,6 +222,9 @@ function setOnclickForAddsub(addsubArray) {
         var t = document.createTextNode(sub);
         li.appendChild(t);
         parent.appendChild(li);
+        // A new subitem/subgoal means that the top-level goal is not
+        // completed.
+        parent.classList.remove('checked');
         // Create close button
         var spanClose = document.createElement("SPAN");
         var txt = document.createTextNode("\u00D7");
