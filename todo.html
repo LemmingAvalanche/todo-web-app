@@ -237,14 +237,12 @@ function setOnclickForAddsub(addsubArray) {
 var addsub = document.getElementsByClassName("addsub");
 setOnclickForAddsub(addsub);
 
-// Add a "checked" symbol when clicking on a list item
-var list = document.querySelector('ul');
-list.addEventListener('click', function(ev) {
-  if (ev.target.tagName === 'LI') {
-    if (!ev.target.classList.contains('checked')) {
-      ev.target.classList.add('checked');
+/* Check/uncheck a top-level item. */
+function topLevelCheckUncheck(target) {
+  if (!target.classList.contains('checked')) {
+      target.classList.add('checked');
       // Also check all the subitems.
-      var children = ev.target.getElementsByTagName("LI");
+      var children = target.getElementsByTagName("LI");
       var i;
       for (i = 0; i < children.length; i++) {
           var clist = children[i].classList;
@@ -254,15 +252,26 @@ list.addEventListener('click', function(ev) {
               clist.add('checked');
           }
       }
+  } else {
+      target.classList.remove('checked');
+      // Uncheck all subitems.
+      var children = target.getElementsByTagName("LI");
+      var i;
+      for (i = 0; i < children.length; i++) {
+          var clist = children[i].classList;
+          clist.remove('checked');
+      }
+  }
+}
+
+// Add a "checked" symbol when clicking on a list item
+var list = document.querySelector('ul');
+list.addEventListener('click', function(ev) {
+  if (ev.target.tagName === 'LI') {
+    if (ev.target.classList.contains('top-level')) {
+      topLevelCheckUncheck(ev.target);
     } else {
-        ev.target.classList.remove('checked');
-        // Uncheck all subitems.
-        var children = ev.target.getElementsByTagName("LI");
-        var i;
-        for (i = 0; i < children.length; i++) {
-            var clist = children[i].classList;
-            clist.remove('checked');
-        }
+      // TODO implement logic for subitem check/uncheck
     }
   }
 }, false);
