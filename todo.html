@@ -174,15 +174,19 @@ input {
 
 <script>
 
-// Create a "close" button and append it to each list item
-var myNodelist = document.getElementsByTagName("LI");
-var i;
-for (i = 0; i < myNodelist.length; i++) {
+function createCloseButton(node) {
   var span = document.createElement("SPAN");
   var txt = document.createTextNode("\u00D7");
   span.className = "close";
   span.appendChild(txt);
-  myNodelist[i].appendChild(span);
+  node.appendChild(span);
+}
+
+// Create a "close" button and append it to each list item
+var myNodelist = document.getElementsByTagName("LI");
+var i;
+for (i = 0; i < myNodelist.length; i++) {
+  createCloseButton(myNodelist[i]);
 }
 
 function setOnclickForClose(closeArray) {
@@ -223,12 +227,7 @@ function setOnclickForAddsub(addsubArray) {
         // A new subitem/subgoal means that the top-level goal is not
         // completed.
         parent.classList.remove('checked');
-        // Create close button
-        var spanClose = document.createElement("SPAN");
-        var txt = document.createTextNode("\u00D7");
-        spanClose.className = "close";
-        spanClose.appendChild(txt);
-        li.appendChild(spanClose);
+        createCloseButton(li);
         setOnclickForClose(close);
       }
     }
@@ -327,12 +326,7 @@ function newElement() {
   }
   document.getElementById("myInput").value = "";
 
-  // Add `close` button
-  var spanClose = document.createElement("SPAN");
-  var txt = document.createTextNode("\u00D7");
-  spanClose.className = "close";
-  spanClose.appendChild(txt);
-  li.appendChild(spanClose);
+  createCloseButton(li);
   // Add `addsub` button
   var spanAddsub = document.createElement("SPAN");
   var txt = document.createTextNode("+");
