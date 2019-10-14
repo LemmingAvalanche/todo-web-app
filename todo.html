@@ -278,6 +278,23 @@ function topLevelCheckUncheck(target) {
   }
 }
 
+/* Returns true if all siblings of a top-level item are checked */
+function allChildrenChecked(node) {
+  // NOTE It seems that we need to use `querySelectorAll` in order
+  //   to get a type that we can use `map(_)` on.
+  var childrenArray = node.querySelectorAll(":scope > LI");
+  var children = Array.from(childrenArray);
+  var childrenThatAreChecked = children.map(function(node) {
+      return node.classList.contains('checked')
+      // Nodes that have been closed are treated as “checked”.
+          || (node.style.display == "none")
+  });
+  return childrenThatAreChecked.reduce(
+      // Return true if all values in the array are equal to `true`.
+      function (accumulator, checked) {
+          return accumulator && checked;
+      });
+}
 
 /* Check/uncheck a subitem. */
 function subItemCheckUncheck(target) {
@@ -285,22 +302,7 @@ function subItemCheckUncheck(target) {
       target.classList.add('checked');
       // If all siblings are also checked then we must check the
       // top-level item.
-      // NOTE It seems that we need to use `querySelectorAll` in order
-      //   to get a type that we can use `map(_)` on.
-      var siblingsArray = target.parentNode.
-                            querySelectorAll(":scope > LI");
-      var siblings = Array.from(siblingsArray);
-      var siblingsThatAreChecked = siblings.map(function(node) {
-          return node.classList.contains('checked')
-                 // Nodes that have been closed are treated as “checked”.
-                   || (node.style.display == "none")
-        });
-      var allSiblingsChecked = siblingsThatAreChecked.reduce(
-        // Return true if all values in the array are equal to `true`.
-        function (accumulator, checked) {
-          return accumulator && checked;
-        });
-      if (allSiblingsChecked) {
+      if (allChildrenChecked(target.parentNode)) {
         target.parentNode.classList.add('checked');
       }
   } else {
