@@ -223,10 +223,6 @@ setOnclickForClose(close);
 var myTopLevelNodelist = document.getElementsByClassName("top-level");
 var i;
 for (i = 0; i < myTopLevelNodelist.length; i++) {
-  var span = document.createElement("SPAN");
-  var txt = document.createTextNode("+");
-  span.className = "addsub";
-  span.appendChild(txt);
   createAddsubButton(myTopLevelNodelist[i]);
 }
 
