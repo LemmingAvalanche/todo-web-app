@@ -212,6 +212,13 @@ function setOnclickForClose(closeArray) {
       closeArray[i].onclick = function() {
         var div = this.parentElement;
         div.style.display = "none";
+        // if this is a subitem we need to check the parent in case all
+        // non-closed children are `checked`.
+        var node = this.parentElement;
+        if (!node.classList.contains("top-level")
+              && allChildrenChecked(node.parentElement)) {
+            node.parentElement.classList.add('checked');
+        }
       }
     }
 }
